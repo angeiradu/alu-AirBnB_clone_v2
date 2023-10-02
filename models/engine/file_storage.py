@@ -9,7 +9,7 @@ class FileStorage:
     __objects = {}
 
     def __create_key(self, obj):
-        return '{}.{}'.format(obj.__class__, obj.id)
+        return '{}.{}'.format(obj.__class__,__name__, obj.id)
 
     def all(self, cls=None):
         """Returns a dictionary of all models of the specified class
@@ -27,7 +27,7 @@ class FileStorage:
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
-        self.all().update({ self.__create_key(obj): obj })
+        setattr(self.__objects, self.__create_key(obj), obj)
 
     def save(self):
         """Saves storage dictionary to file"""
