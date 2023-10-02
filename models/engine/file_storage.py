@@ -67,4 +67,6 @@ class FileStorage:
         if obj is None:
             return
         else:
-            delattr(self.__objects, self.__create_key(obj))
+            # Method to safely delete. If an attribute does not exist
+            # An error will not be raised
+            obj.pop(self.__create_key(obj), None)
