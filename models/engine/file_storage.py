@@ -63,6 +63,7 @@ class FileStorage:
             pass
     
     def delete(self, obj=None):
+        """Deletes a specified object"""
         if obj is None:
             return
         else:
