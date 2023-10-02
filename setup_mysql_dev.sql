@@ -2,7 +2,7 @@
 -- also creates user hbnb_dev on localhost
 -- grants all privileges to user on hbnb_test_db
 -- grants select access to user on performance_schema database
-CREATE DATABASE IF NOT EXISTS hbnb_test_db;
+CREATE DATABASE IF NOT EXISTS hbnb_dev_db;
 CREATE USER IF NOT EXISTS 'hbnb_dev'@'localhost' IDENTIFIED BY 'hbnb_dev_pwd';
 GRANT ALL ON hbnb_dev_db.* TO 'hbnb_dev'@'localhost';
 GRANT SELECT ON performance_schema.* TO 'hbnb_dev'@'localhost';
