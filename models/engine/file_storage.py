@@ -9,7 +9,7 @@ class FileStorage:
     __objects = {}
 
     def __create_key(self, obj):
-        return '{}.{}'.format(obj.__class___, obj.id)
+        return '{}.{}'.format(obj.__class__, obj.id)
 
     def all(self, cls=None):
         """Returns a dictionary of all models of the specified class
