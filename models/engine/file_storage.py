@@ -70,4 +70,5 @@ class FileStorage:
             # Method to safely delete. If an attribute does not exist
             # An error will not be raised
             print(self.__objects)
+            print(self.__create_key(obj))
             obj.__dict__.pop(self.__create_key(obj), None)
