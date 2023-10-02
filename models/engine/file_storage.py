@@ -15,13 +15,13 @@ class FileStorage:
         """Returns a dictionary of all models of the specified class
         or none, if no class has been specified"""
         if cls is None:
-            return FileStorage.__objects
+            return FileStorage.__objects.values()
         else:
-            objects_of_class = {}
+            objects_of_class = []
             
             for key, value in self.__objects.items():
                 if cls == key.split('.')[0]:
-                    setattr(objects_of_class, key, value)
+                    objects_of_class.append(value)
             
             return objects_of_class
 
