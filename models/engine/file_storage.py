@@ -67,4 +67,4 @@ class FileStorage:
         if obj is None:
             return
         else:
-            delattr(self.__create_key(obj))
+            delattr(self.__objects, self.__create_key(obj))
