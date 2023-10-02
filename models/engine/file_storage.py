@@ -20,7 +20,7 @@ class FileStorage:
             objects_of_class = {}
 
             for key, value in self.__objects.items():
-                if cls.__class__.name == key.split('.')[0]:
+                if cls == value.__class__:
                     objects_of_class[key] = value
 
             return objects_of_class
