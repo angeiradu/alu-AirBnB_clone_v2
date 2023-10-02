@@ -9,7 +9,7 @@ class FileStorage:
     __objects = {}
 
     def __create_key(self, obj):
-        return '{}.{}'.format(obj.__class__,__name__, obj.id)
+        return '{}.{}'.format(obj.__class__.__name__, obj.id)
 
     def all(self, cls=None):
         """Returns a dictionary of all models of the specified class
@@ -18,16 +18,16 @@ class FileStorage:
             return FileStorage.__objects.values()
         else:
             objects_of_class = []
-            
+
             for key, value in self.__objects.items():
                 if cls == key.split('.')[0]:
                     objects_of_class.append(value)
-            
+
             return objects_of_class
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
-        setattr(self.__objects, self.__create_key(obj), obj)
+        self.__objects[self.__create_key(obj)] = obj
 
     def save(self):
         """Saves storage dictionary to file"""
@@ -49,19 +49,19 @@ class FileStorage:
         from models.review import Review
 
         classes = {
-                    'BaseModel': BaseModel, 'User': User, 'Place': Place,
-                    'State': State, 'City': City, 'Amenity': Amenity,
-                    'Review': Review
-                  }
+            'BaseModel': BaseModel, 'User': User, 'Place': Place,
+            'State': State, 'City': City, 'Amenity': Amenity,
+            'Review': Review
+        }
         try:
             temp = {}
             with open(FileStorage.__file_path, 'r') as f:
                 temp = json.load(f)
                 for key, val in temp.items():
-                        self.all()[key] = classes[val['__class__']](**val)
+                    self.__objects[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
-    
+
     def delete(self, obj=None):
         """Deletes a specified object"""
         if obj is None:
