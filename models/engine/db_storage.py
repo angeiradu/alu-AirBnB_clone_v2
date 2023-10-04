@@ -42,6 +42,7 @@ class DBStorage:
             user, password, host, db)
 
         self.__engine = create_engine(connection_string, pool_pre_ping=True)
+        self.__metadata = MetaData()
 
         if env == "test":
             # Drop all tables if in test environment
