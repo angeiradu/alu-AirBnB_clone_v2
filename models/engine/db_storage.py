@@ -41,8 +41,6 @@ class DBStorage:
         connection_string = "mysql+mysqldb://{}:{}@{}/{}".format(
             user, password, host, db)
 
-        print(connection_string)
-
         self.__engine = create_engine(connection_string, pool_pre_ping=True)
         self.__metadata = MetaData()
 

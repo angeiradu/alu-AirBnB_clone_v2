@@ -14,7 +14,7 @@ class State(BaseModel, Base):
     name = Column(
         String(128), nullable=False)
 
-    @property()
+    @property
     def cities(self):
         storage_type = environ['HBNB_TYPE_STORAGE']
         if storage_type == "db":
