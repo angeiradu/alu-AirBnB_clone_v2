@@ -121,7 +121,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             _cls, *_params_list = args.split(' ')
 
-            if _cls not in self.classes:
+            if _cls not in self.__classes:
                 print("** class doesn't exist **")
                 return
 
@@ -141,7 +141,7 @@ class HBNBCommand(cmd.Cmd):
 
             print(_params_dict)
 
-            new_instance = self.classes[_cls](**_params_dict)
+            new_instance = self.__classes[_cls](**_params_dict)
             storage.save()
             print(new_instance.id)
             storage.save()
