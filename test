@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 
 
-echo "create State name='California'" | \
-HBNB_ENV=test \
+echo "all State" | \
+HBNB_ENV=dev \
 HBNB_MYSQL_USER=hbnb_dev \
 HBNB_MYSQL_PWD=hbnb_dev_pwd \
 HBNB_MYSQL_HOST=localhost \

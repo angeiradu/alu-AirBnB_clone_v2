@@ -238,7 +238,7 @@ class HBNBCommand(cmd.Cmd):
             objects = storage.all()
 
         # Convert the returned objects to a list of string representations of the said objects
-        print_list = map(lambda o: str(o), objects.values())
+        print_list = list(map(lambda o: str(o), objects.values()))
 
         # Print the list of strings
         print(print_list)

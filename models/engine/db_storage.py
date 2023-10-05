@@ -19,14 +19,14 @@ class DBStorage:
     __engine = None
     __session = None
     __metadata = None
-    __classes = {
-        'Amenity': Amenity,
-        'City': City,
-        'Place': Place,
-        'Review': Review,
-        'State': State,
-        'User': User
-    }
+    __classes = [
+        Amenity,
+        City,
+        Place,
+        Review,
+        State,
+        User
+    ]
 
     def __init__(self):
         """Instantiates a new instance of DBStorage
@@ -49,19 +49,22 @@ class DBStorage:
             self.__metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        query_results = []
         results = {}
+        classes_to_get = []
 
         # We get all classes if none has been specified
         # If one has been specified, we get that
-        classes_to_get = self.__classes.keys() if cls is None else [cls]
+        if cls is None:
+            classes_to_get = self.__classes
+        else:
+            classes_to_get = [cls]
 
-        for class_name in classes_to_get:
-            class_object = self.__classes[class_name]
-            query_results.append(self.__session.query(class_object).all())
+        for _cls in classes_to_get:
+            query = self.__session.query(_cls)
+            query_results = query.all()
 
-        for result in query_results:
-            results[class_name + "." + result.id] = result
+            for result in query_results:
+                results[_cls.__name__ + "." + result.id] = result
 
         return results
 
