@@ -66,9 +66,7 @@ class DBStorage:
         return results
 
     def new(self, obj):
-        class_name = obj.__class__
-        new_obj = self.__classes[class_name](**obj)
-        self.__session.add(new_obj)
+        self.__session.add(obj)
 
     def delete(self, obj):
         if obj is not None:
