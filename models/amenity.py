@@ -3,9 +3,5 @@
 from models.base_model import BaseModel
 
 class Amenity(BaseModel)
-    """This is the class for Amenity
-    Attributes:
-        name: input name
-    """
-    __tablename__ = "amenities"
+    """This is the class for Amenity"""
     name = ""
