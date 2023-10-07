@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 
-echo "all State" | \
+echo 'create Place ' | \
 HBNB_ENV=dev \
 HBNB_MYSQL_USER=hbnb_dev \
 HBNB_MYSQL_PWD=hbnb_dev_pwd \
