@@ -1,11 +1,11 @@
 #!/usr/bin/bash
 
-
-echo 'all' | \
+rm file.json
+echo 'create State' | \
 HBNB_ENV=dev \
 HBNB_MYSQL_USER=hbnb_dev \
 HBNB_MYSQL_PWD=hbnb_dev_pwd \
 HBNB_MYSQL_HOST=localhost \
 HBNB_MYSQL_DB=hbnb_dev_db \
-HBNB_TYPE_STORAGE=db \
+HBNB_TYPE_STORAGE=fs \
 ./console.py

@@ -55,7 +55,7 @@ class BaseModel:
         """Convert instance into dict format"""
         dictionary = {}
 
-        for key, value in self.__dict__:
+        for key, value in self.__dict__.items():
             # Converting dates to isoformat strings
             if key == 'created_at' or key == 'updated_at':
                 value = value.isoformat()
