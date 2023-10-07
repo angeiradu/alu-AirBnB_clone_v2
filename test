@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 
-echo 'create Place ' | \
+echo 'all' | \
 HBNB_ENV=dev \
 HBNB_MYSQL_USER=hbnb_dev \
 HBNB_MYSQL_PWD=hbnb_dev_pwd \
