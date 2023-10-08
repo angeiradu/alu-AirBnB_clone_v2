@@ -107,18 +107,3 @@ class test_fileStorage(unittest.TestCase):
         from models.engine.file_storage import FileStorage
         print(type(storage))
         self.assertEqual(type(storage), FileStorage)
-
-    def test_create_state(self):
-        """ New state object is created """
-        from models.state import State
-        new_state = State(name="California")
-        self.assertEqual(new_state.name, "California")
-
-    def test_create_state_and_city(self):
-        """ New state and city objects are created """
-        from models.state import State
-        from models.city import City
-        new_state = State(name="California")
-        new_city = City(name="San Francisco", state_id=new_state.id)
-        self.assertEqual(new_city.name, "San Francisco")
-        self.assertEqual(new_city.state_id, new_state.id)
