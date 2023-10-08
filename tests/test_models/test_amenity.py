@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """ """
-from tests.test_models.test_base_model import TestBaseModel
+from tests.test_models.test_base_model import test_basemodel
 from models.amenity import Amenity
 
 
-class TestAmenity(TestBaseModel):
-    """ Test for amenity"""
+class test_Amenity(test_basemodel):
+    """ """
 
     def __init__(self, *args, **kwargs):
         """ """
@@ -16,5 +16,4 @@ class TestAmenity(TestBaseModel):
     def test_name2(self):
         """ """
         new = self.value()
-        new.name = "amenity"
         self.assertEqual(type(new.name), str)
