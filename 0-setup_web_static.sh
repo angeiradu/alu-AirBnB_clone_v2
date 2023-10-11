@@ -19,7 +19,7 @@ sudo ln -sf '/data/web_static/current' '/data/web_static/releases/test'
 sudo chown -R ubuntu:ubuntu /data
 
 # Set the permissions to 740
-sudo chmod 700 /data -R
+sudo chmod 777 /data -R
 
 # Writing the nginx configuration file for the static file server
 echo "
