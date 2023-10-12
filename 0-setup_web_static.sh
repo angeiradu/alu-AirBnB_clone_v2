@@ -12,14 +12,14 @@ sudo mkdir '/data/web_static/shared' -p
 echo '<h1>Hello Nginx</h1>' | sudo tee '/data/web_static/releases/test/index.html'
 
 # Link the test directory to the current web_static
-sudo ln -sf '/data/web_static/current' '/data/web_static/releases/test'
+sudo ln -sf '/data/web_static/releases/test' '/data/web_static/current'
 
 # Change owner of the data directory to ubuntu of the ubuntu user group
 # -R option to apply this change to every file recursively
 sudo chown -R ubuntu:ubuntu /data
 
-# Set the permissions to 740
-sudo chmod 600 /data -R
+# Set the permissions to 755
+sudo chmod 755 /data -R
 
 # Writing the nginx configuration file for the static file server
 echo "
