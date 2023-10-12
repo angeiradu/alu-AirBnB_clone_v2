@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Script to setup web servers
 
+# Update all software
+sudo apt-get update && sudo apt-get upgrade
+
 # Install nginx
 sudo apt-get install nginx -y
 
