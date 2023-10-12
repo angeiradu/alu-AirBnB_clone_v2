@@ -43,3 +43,5 @@ http {
     }
 }
 " | sudo tee '/etc/nginx/nginx.conf'
+
+sudo service nginx restart
