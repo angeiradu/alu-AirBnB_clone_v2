@@ -2,7 +2,7 @@
 # Script to setup web servers
 
 # Update all software
-sudo apt-get update && sudo apt-get upgrade
+sudo apt-get update && sudo apt-get upgrade -y
 
 # Install nginx
 sudo apt-get install nginx -y
