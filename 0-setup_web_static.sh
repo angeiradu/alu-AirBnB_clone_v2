@@ -1,47 +1,27 @@
 #!/usr/bin/env bash
-# Script to setup web servers
+# script that sets up web servers for the deployment of web_static
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
 
-# Update all software
-sudo apt-get update && sudo apt-get upgrade -y
+sudo mkdir -p /data/
+sudo mkdir -p /data/web_static/
+sudo mkdir -p /data/web_static/releases/
+sudo mkdir -p /data/web_static/shared/
+sudo mkdir -p /data/web_static/releases/test/
+sudo touch /data/web_static/releases/test/index.html
+sudo echo "<html>
+  <head>
+  </head>
+  <body>
+    Holberton School
+  </body>
+</html>" | sudo tee /data/web_static/releases/test/index.html
 
-# Install nginx
-sudo apt-get install nginx -y
+sudo ln -s -f /data/web_static/releases/test/ /data/web_static/current
 
-# Create test and shared directories
-sudo mkdir '/data/web_static/releases/test/' -p
-sudo mkdir '/data/web_static/shared' -p
+sudo chown -R ubuntu:ubuntu /data/
 
-# Create a test HTML file
-echo '<h1>Hello Nginx</h1>' | sudo tee '/data/web_static/releases/test/index.html'
-
-# Link the test directory to the current web_static
-sudo ln -sf '/data/web_static/releases/test' '/data/web_static/current'
-
-# Change owner of the data directory to ubuntu of the ubuntu user group
-# -R option to apply this change to every file recursively
-sudo chown -R ubuntu:ubuntu /data
-
-# Set the permissions to 755
-sudo chmod 755 /data -R
-
-# Writing the nginx configuration file for the static file server
-echo "
-events {
-
-}
-
-http {
-    include /etc/nginx/mime.types;
-    
-    server {
-        listen 80;
-	server_name getrelay.tech www.getrelay.tech;
-	
-	location /hbnb_static {
-	    alias /data/web_static/current/;
-        }
-    }
-}
-" | sudo tee '/etc/nginx/nginx.conf'
+sudo sed -i '/listen 80 default_server/a location /hbnb_static { alias /data/web_static/current/;}' /etc/nginx/sites-enabled/default
 
 sudo service nginx restart
