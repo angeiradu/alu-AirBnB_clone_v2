@@ -23,10 +23,6 @@ class FileStorage:
     def __create_key(self, obj):
         return '{}.{}'.format(obj.__class__.__name__, obj.id)
 
-    def close(self):
-        """call reload() method for deserializing the JSON file to objects"""
-        self.reload()
-
     def all(self, cls=None):
         """Returns a dictionary of all models of the specified class
         or none, if no class has been specified"""
@@ -74,3 +70,8 @@ class FileStorage:
         else:
             key = self.__create_key(obj)
             del self.__objects[key]
+
+
+      def close(self):
+        """call reload() method for deserializing the JSON file to objects"""
+        self.reload()
