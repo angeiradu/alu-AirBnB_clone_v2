@@ -21,7 +21,7 @@ class State(BaseModel, Base):
             return [city for city in storage.all(City).values()
                     if city.state_id == self.id]
 
-   if models.storage_t != "db":
+    if models.storage_t != "db":
        @property
         def cities(self):
             """getter for list of city instances related to the state"""
