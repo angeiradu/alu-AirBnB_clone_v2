@@ -22,10 +22,10 @@ class State(BaseModel, Base):
                     if city.state_id == self.id]
 
     if models.storage_t != "db":
-       @property
+        @property
         def cities(self):
             """getter for list of city instances related to the state"""
-            city_list = []
+          city_list = []
             all_cities = models.storage.all(City)
             for city in all_cities.values():
                 if city.state_id == self.id:
